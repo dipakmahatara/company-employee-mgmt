@@ -19,7 +19,7 @@ class CompanyFactory extends Factory
         return [
             'name' => fake()->company(),
             'email' => fake()->companyEmail(),
-            'logo' => fake()->imageUrl(200, 200, 'cats'),
+            'logo' => 'https://via.placeholder.com/150',
             'website' => fake()->url(),
         ];
     }
