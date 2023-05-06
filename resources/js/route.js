@@ -5,7 +5,7 @@ const router = createRouter({
     routes: [
         {
             path: '/',
-            component: () => import('./pages/Login.vue')
+            component: () => import('./pages/auth/Login.vue')
         },
         {
             name: 'companyList',
@@ -47,7 +47,7 @@ router.beforeEach((to, from, next) => {
 })
 
 function isAuthenticated() {
-    return Boolean(localStorage.getItem('APP_DEMO_USER_TOKEN'))
+    return Boolean(localStorage.getItem('AUTH_TOKEN'))
 }
 
 export default router;

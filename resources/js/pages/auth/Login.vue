@@ -53,9 +53,9 @@ export default {
         })
         const handleLogin = async () => {
             try {
-                const result = await axios.post('/api/auth/login', form)
+                const result = await axios.post('/api/login', form)
                 if (result.status === 200 && result.data && result.data.token) {
-                    localStorage.setItem('APP_DEMO_USER_TOKEN', result.data.token)
+                    localStorage.setItem('AUTH_TOKEN', result.data.token)
                     await router.push('companies')
                 }
             } catch (e) {
