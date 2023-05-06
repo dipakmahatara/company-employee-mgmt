@@ -17,12 +17,13 @@ use App\Http\Controllers\EmployeeController;
 |
 */
 
-Route::post('/auth/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'authenticate']);
 
-Route::get('/get-all-companies', [CompanyController::class, 'getAllCompanies']);
-Route::apiResource('companies', CompanyController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
-Route::apiResource('employees', EmployeeController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
-// Route::apiResource('companies', CompanyController::class)->middleware('auth:sanctum');
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/get-all-companies', [CompanyController::class, 'getAllCompanies']);
+    Route::apiResource('companies', CompanyController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
+    Route::apiResource('employees', EmployeeController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
+});
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
