@@ -86,6 +86,10 @@
                 await axios.get(`/api/companies?page=${page}`).then(({data})=>{
                     this.companies = data
                 }).catch(({ response })=>{
+                    if(response.status==401){
+                        localStorage.removeItem('AUTH_TOKEN')
+                        this.$router.push('/')
+                    }
                     console.error(response)
                 })
             },

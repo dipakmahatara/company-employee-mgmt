@@ -60,6 +60,7 @@ export default {
     name:"add-company",
     data(){
         return {
+            successMessage: '',
             notifmsg: '',
             company:{
                 name:"",
@@ -86,8 +87,13 @@ export default {
 
             await axios.post('/api/companies', formData, config)
             .then(response=>{
+                alert(response.data.message)
                 this.$router.push({name:"companyList"})
             }).catch(error=>{
+                if(error.response.status==401){
+                    localStorage.removeItem('AUTH_TOKEN')
+                    this.$router.push('/')
+                }
                 console.log(error)
                 this.notifmsg = error.response.data.errors
             })

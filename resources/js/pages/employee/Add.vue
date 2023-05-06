@@ -92,11 +92,16 @@ export default {
             await axios.get(`/api/get-all-companies`).then(({data})=>{
                 this.companies = data
             }).catch(({ response })=>{
+                if(response.status==401){
+                    localStorage.removeItem('AUTH_TOKEN')
+                    this.$router.push('/')
+                }
                 console.error(response)
             })
         },
         async create(){
             await axios.post('/api/employees',this.employee).then(response=>{
+                alert(response.data.message)
                 this.$router.push({name:"employeeList"})
             }).catch(error=>{
                 console.log(error)

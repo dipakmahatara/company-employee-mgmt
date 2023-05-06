@@ -99,6 +99,10 @@ export default {
                 this.employee.company_id = company_id
                 this.employee.email = email
             }).catch(error=>{
+                if(error.response.status==401){
+                    localStorage.removeItem('AUTH_TOKEN')
+                    this.$router.push('/')
+                }
                 console.log(error)
             })
         },
@@ -111,6 +115,7 @@ export default {
         },
         async update(){
             await axios.post(`/api/employees/${this.$route.params.id}`,this.employee).then(response=>{
+                alert(response.data.message)
                 this.$router.push({name:"employeeList"})
             }).catch(error=>{
                 console.log(error)

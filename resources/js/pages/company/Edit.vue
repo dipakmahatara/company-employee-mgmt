@@ -83,6 +83,10 @@ export default {
                 this.company.email = email
                 this.company.website = website
             }).catch(error=>{
+                if(error.response.status==401){
+                    localStorage.removeItem('AUTH_TOKEN')
+                    this.$router.push('/')
+                }
                 console.log(error)
             })
         },
@@ -100,6 +104,7 @@ export default {
 
             await axios.post(`/api/companies/${this.$route.params.id}`, formData, config)
             .then(response=>{
+                alert(response.data.message)
                 this.$router.push({name:"companyList"})
             }).catch(error=>{
                 console.log(error)
