@@ -35,7 +35,7 @@
                         <td class="px-6 py-4">
                             <div class="flex -space-x-1 overflow-hidden">
                                 <img v-if="company.logo" class="inline-block h-8 w-8 rounded-full ring-2 ring-white" :src="company.logo" alt="">
-                                <span v-else class="bg-blue-100 text-blue-800 text-sm font-semibold inline-flex items-center h-8 w-8 p-2.5 rounded-full dark:bg-gray-700 dark:text-blue-400 capitalize">
+                                <span v-else class="bg-blue-100 text-blue-800 text-sm font-semibold inline-flex justify-center items-center h-8 w-8 p-2.5 rounded-full dark:bg-gray-700 dark:text-blue-400 capitalize">
                                     {{ (company.name).charAt(0) }}
                                 </span>
                             </div>
