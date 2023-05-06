@@ -36,7 +36,6 @@ class CompanyCreated extends Notification
     {
         return (new MailMessage)
             ->line('Welcome to the company-employee management system.')
-            ->action('Go to the website', url('/'))
             ->line('Thank you for using our application!');
     }
 

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\CompanyStoreRequest;
 use App\Http\Requests\CompanyUpdateRequest;
+use App\Notifications\CompanyCreated;
 
 class CompanyController extends Controller
 {
@@ -41,6 +42,8 @@ class CompanyController extends Controller
 
         $input['logo'] =  Str::after($path, 'public/');
         $company = Company::create($input);
+
+        $company->notify(new CompanyCreated());
 
         return response()->json([
             'message' => 'Company Created Successfully!!',
