@@ -15,6 +15,9 @@ class DatabaseSeeder extends Seeder
         // Create 10 companies using the CompanyFactory
         \App\Models\Company::factory(10)->create();
 
+        // Create 10 companies using the EmployeeFactory
+        \App\Models\Employee::factory(10)->create();
+
         // Creating users using the UserSeeder
         $this->call([
             UserSeeder::class,
