@@ -41,7 +41,25 @@ To run this project, you will need to set the following environment variables to
 
 copy .env.example to .env and set the following variable
 
+Set the database credentials in the following variables
+
+`DB_CONNECTION=mysql`
+
+`DB_HOST=127.0.0.1`
+
+`DB_PORT=3306`
+
+`DB_DATABASE=company`\_mgmt`
+
+`DB_USERNAME=root`
+
+`DB_PASSWORD=`
+
+Set SESSION_DRIVER to cookie
+
 `SESSION_DRIVER=cookie`
+
+Set the mail configuration. You can use mailtrap for this
 
 `MAIL_MAILER=`
 
@@ -59,9 +77,24 @@ copy .env.example to .env and set the following variable
 
 `MAIL_FROM_NAME=`
 
+## Run Database Seeder
+
+```bash
+php artisan key:generate
+php artisan migrate
+```
+
 ## Run Locally
 
 ```bash
 npm run build
 npm run dev
 ```
+
+Open new terminal and run the followin command
+
+```bash
+php artisan serve
+```
+
+Now, you can enter the address shown in the terminal. It usually [http://127.0.0.1:8000].
