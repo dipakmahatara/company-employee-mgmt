@@ -23,7 +23,7 @@ class AuthController extends Controller
             ]);
 
             if (Auth::attempt($credentials)) {
-                $request->session()->regenerate();
+                // $request->session()->regenerate();
                 return new JsonResponse(['token' => $request->user()->createToken("API_TOKEN")->plainTextToken], 200);
             }
 
